@@ -5,7 +5,9 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
+  <sprites name="sprites">
+    <sprite>sprites\projectile_sprite</sprite>
+  </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <objects name="objects">
@@ -13,7 +15,12 @@
     <object>objects\explosion</object>
     <object>objects\wall</object>
     <object>objects\obj_enemy</object>
+    <object>objects\player</object>
+    <object>objects\projectile</object>
   </objects>
+  <rooms name="rooms">
+    <room>rooms\room0</room>
+  </rooms>
   <help>
     <rtf>help.rtf</rtf>
   </help>

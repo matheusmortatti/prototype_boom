@@ -8,36 +8,33 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Init variables
-
-explosion_size_left = 20;
-explosion_list = ds_list_create();
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
+        <id>102</id>
+        <kind>0</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_set_motion</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>1</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -52,38 +49,11 @@ explosion_list = ds_list_create();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Propagates explosion
+            <string>/// Fire!!!!!!!!!!!!!!!
 
-while (explosion_size_left &gt; 0) {
 
-    var size = ds_list_size (explosion_list);
-    
-    for (var i = 0; i &lt; size; i++) {
-        if (!place_meeting(explosion_list[i].x-1, explosion_list[i].y, explosion)
-        &amp;&amp; !place_meeting(explosion_list[i].x-1, explosion_list[i].y, wall)) {
-            instance_create(explosion_list[i].x-1, explosion_list[i].y, explosion);
-            explosion_size_left -= 1;
-        }
-        
-        if (!place_meeting(explosion_list[i].x+1, explosion_list[i].y, explosion)
-        &amp;&amp; !place_meeting(explosion_list[i].x+1, explosion_list[i].y, wall)) {
-            instance_create(explosion_list[i].x+1, explosion_list[i].y, explosion);
-            explosion_size_left -= 1;
-        }
-        
-         if (!place_meeting(explosion_list[i].x, explosion_list[i].y-1, explosion)
-        &amp;&amp; !place_meeting(explosion_list[i].x, explosion_list[i].y-1, wall)) {
-            instance_create(explosion_list[i].x, explosion_list[i].y-1, explosion);
-            explosion_size_left -= 1;
-        }
-        
-        if (!place_meeting(explosion_list[i].x, explosion_list[i].y+1, explosion)
-        &amp;&amp; !place_meeting(explosion_list[i].x, explosion_list[i].y+1, wall)) {
-            instance_create(explosion_list[i].x, explosion_list[i].y+1, explosion);
-            explosion_size_left -= 1;
-        }
-    }
-
+if mouse_check_button_pressed(mb_left) {
+   instance_create(x, y, projectile);
 }
 </string>
           </argument>
