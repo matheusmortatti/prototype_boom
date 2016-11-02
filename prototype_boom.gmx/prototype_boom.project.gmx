@@ -10,6 +10,9 @@
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\explosionController</object>
+    <object>objects\explosion</object>
+    <object>objects\wall</object>
+    <object>objects\obj_enemy</object>
   </objects>
   <help>
     <rtf>help.rtf</rtf>
