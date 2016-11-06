@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>/// Init variables
 
-explosion_size_left = 40;
+explosion_size_left = 100;
 explosion_list = ds_list_create();
 
 

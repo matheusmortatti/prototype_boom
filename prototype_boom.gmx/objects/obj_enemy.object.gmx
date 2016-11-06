@@ -27,10 +27,10 @@
             <kind>1</kind>
             <string>/// Init Variables
 
-time_between_steps = 1;
+time_between_steps = 0.5;
 time_of_last_step = 0;
 
-active = true;
+active = false;
 
 position_last_seen_player_x = 0;
 position_last_seen_player_y = 0;
@@ -62,12 +62,17 @@ chaos = false;
             <string>/// Search Script
 
 
-if (active == true &amp;&amp; instance_exists(player)) {
+if (instance_exists(player)) {
     var ex, ey;
     ex = instance_nearest(x, y, player).x;
     ey = instance_nearest(x, y, player).y;
     
-    if (collision_line(x, y, ex, ey, wall, false, true) == noone) {
+    draw_set_color(c_black);
+    draw_line(x,y, ex, ey);
+    
+    if (collision_line(x, y, ex, ey, wall, false, true) == noone
+        &amp;&amp; point_distance(x,y, ex, ey) &lt; 32 * 8) {
+        active = true;
         position_last_seen_player_x = ex;
         position_last_seen_player_y = ey;
     }
@@ -100,18 +105,45 @@ if (active) {
         player_direction = point_direction(x, y,
                             position_last_seen_player_x, position_last_seen_player_y);
         
-        if (player_direction &gt;= 315 || player_direction &lt; 45
-        &amp;&amp; !place_meeting(x+32, y, wall)) {
-            x += 32;
-        } else if (player_direction &gt;= 135 &amp;&amp; player_direction &lt; 225
-         &amp;&amp; !place_meeting(x-32, y, wall)){
-            x -= 32;
-        }else if (player_direction &gt;= 225 &amp;&amp; player_direction &lt; 315
-         &amp;&amp; !place_meeting(x, y+32, wall)){
-            y += 32;
-        }else if (player_direction &gt;= 45 &amp;&amp; player_direction &lt; 135
-         &amp;&amp; !place_meeting(x, y-32, wall)){
-            y -= 32;
+                            
+        show_debug_message(string(player_direction));
+        if (player_direction &gt;= 315 || player_direction &lt; 45) {
+            if (!place_meeting(x+32, y, wall)) {
+                x += 32;
+            } else if (player_direction &gt;= 315 &amp;&amp;
+                        !place_meeting(x, y+32, wall)) {
+                y+=32;
+            } else if (!place_meeting(x, y-32, wall)) {
+                y-=32;
+            }
+        } else if (player_direction &gt;= 135 &amp;&amp; player_direction &lt; 225) {
+             if (!place_meeting(x-32, y, wall)) {
+                    x -= 32;
+                } else if (player_direction &lt;= 180 &amp;&amp;
+                            !place_meeting(x, y-32, wall)) {
+                    y-=32;
+                } else if (!place_meeting(x, y+32, wall)) {
+                    y+=32;
+                }
+        } else if (player_direction &gt;= 225 &amp;&amp; player_direction &lt; 315) {
+             if (!place_meeting(x, y+32, wall)) {
+                     y+= 32;
+                } else if (player_direction &lt;= 270 &amp;&amp;
+                            !place_meeting(x-32, y, wall)) {
+                    x-=32;
+                } else if (!place_meeting(x+32, y, wall)) {
+                    
+                    x+=32;
+                }
+        } else if (player_direction &gt;= 45 &amp;&amp; player_direction &lt; 135) {
+             if (!place_meeting(x, y-32, wall)) {
+                    y -= 32;
+                } else if (player_direction &lt;= 90 &amp;&amp;
+                            !place_meeting(x+32, y, wall)) {
+                    x+=32;
+                } else if (!place_meeting(x-32, y, wall)) {
+                    x-=32;
+                }
         }
     }
         
@@ -166,6 +198,38 @@ if (chaos) {
           <argument>
             <kind>1</kind>
             <string>instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_self();
+
+if (instance_exists(player)) {
+    var ex, ey;
+    ex = instance_nearest(x, y, player).x;
+    ey = instance_nearest(x, y, player).y;
+    
+    draw_set_color(c_black);
+    draw_line(x,y, ex, ey);
+}
 </string>
           </argument>
         </arguments>
