@@ -7,6 +7,12 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\projectile_sprite</sprite>
+    <sprite>sprites\tile</sprite>
+    <sprite>sprites\player_sprite</sprite>
+    <sprite>sprites\wall_sprite</sprite>
+    <sprite>sprites\explosion_sprite</sprite>
+    <sprite>sprites\explosion_crl_sprite</sprite>
+    <sprite>sprites\enemy_sprite</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -17,8 +23,14 @@
     <object>objects\obj_enemy</object>
     <object>objects\player</object>
     <object>objects\projectile</object>
+    <object>objects\tile_obj</object>
+    <object>objects\restarter</object>
+    <object>objects\background_obj</object>
+    <object>objects\screen_shake</object>
   </objects>
-  <rooms name="rooms"/>
+  <rooms name="rooms">
+    <room>rooms\room0</room>
+  </rooms>
   <help>
     <rtf>help.rtf</rtf>
   </help>
