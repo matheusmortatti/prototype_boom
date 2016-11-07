@@ -139,7 +139,7 @@ if (mouse_check_button_pressed(mb_left) &amp;&amp; bullet_number &gt; 0) {
     bullet_number--;
     instance_create(x, y, projectile);
     active = false;
-    speed = -30;
+    speed = -75;
     alarm[0] = 15;
 }
 </string>
@@ -188,7 +188,7 @@ if (active) {
             y-=(delta_time/1000000 * walking_speed);
     }
 }else {
-    speed *= 0.7;
+    speed *= 0.8;
     direction = image_angle + 90;
     move_outside_solid(direction, -2);
 }

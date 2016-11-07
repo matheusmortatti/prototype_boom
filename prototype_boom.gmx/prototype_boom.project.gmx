@@ -27,6 +27,7 @@
     <object>objects\restarter</object>
     <object>objects\background_obj</object>
     <object>objects\screen_shake</object>
+    <object>objects\GameController</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
